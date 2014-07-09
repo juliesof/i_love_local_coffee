@@ -28,7 +28,15 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
-gem 'yelp', require: 'yelp'
+gem 'yelp'
+
+group :production do
+  gem 'rails_12factor'
+end
+
+group :development, :test do
+  gem 'dotenv-rails'
+end
 
 
 # Use ActiveModel has_secure_password

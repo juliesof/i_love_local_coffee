@@ -8,4 +8,9 @@ class CoffeeShopsController <ApplicationController
     @coffee_shop = CoffeeShop.find(params[:id])
   end
 
+  def new (location)
+    # CoffeeShopSearch(@location).new
+  end
+
+
 end

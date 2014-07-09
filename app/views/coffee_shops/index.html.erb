@@ -1,7 +1,7 @@
-<% @coffee_shops.each do |a| %>
-  <div><%= link_to a.title, coffee_shop_path(@coffee_shop) %></div>
-
-
+<% @coffee_shops.each do |cs| %>
+  <div><%= link_to cs.name, coffee_shop_path(@coffee_shop) %><br></div>
+  <div><%= cs.street_number%> <%= cs.street_name %><br></div>
+  <div><%= cs.city %>, <%= cs.state %> <%= cs.zip %></div><br><br>
 <% end %>
 
 
