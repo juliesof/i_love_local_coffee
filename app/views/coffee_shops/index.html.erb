@@ -1,8 +1,25 @@
-<% @coffee_shops.each do |cs| %>
-  <div><%= link_to cs.name, coffee_shop_path(@coffee_shop) %><br></div>
-  <div><%= cs.street_number%> <%= cs.street_name %><br></div>
-  <div><%= cs.city %>, <%= cs.state %> <%= cs.zip %></div><br><br>
+<% if params[:location].present? %>
+  <% @local_coffee_shops.each do |cs| %>
+  <div><%= link_to cs.name, coffee_shop_path(cs.id) %></div><br>
+  <div><%= cs.location.display_address %></div><br><br>
+  <div><%= cs.phone %></div><br>
+  <% end %>
+
+<% else %>
+
+  <%= form_tag coffee_shops_path, method: :get do %>
+  <!-- forms usually submit as post you have to specify get bc its diff (get) -->
+  <!-- form_tag doesnt provide a temp variable -->
+  <!-- non-model aware form bc css is only-->
+    <%= label_tag :location, 'Location' %>
+    <%= text_field_tag :location %>
+
+    <%= submit_tag %>
+  <% end %>
+
 <% end %>
+
+
 
 
 

@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+gem 'pry-rails', :group => :development
+
 gem 'yelp'
 
 group :production do

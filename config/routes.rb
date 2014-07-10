@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
   resources :coffee_shops
+  # resources :coffee_shop_searches #, only: [:new, :create]
+
+  root 'coffee_shop_searches#new'
 
   devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

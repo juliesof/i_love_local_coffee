@@ -1,33 +1,42 @@
-class CoffeeShopSearch <ActiveRecord::Base
+class CoffeeShopSearch
+
   CLIENT = Yelp::Client.new({
-    consumer_key: ENV['YELP_CONSUMER_KEY'],
-    consumer_secret: ENV['YELP_CONSUMER_SECRET'],
-    token: ENV['YELP_TOKEN'],
-    token_secret: ENV['YELP_TOKEN_SECRET']
+                              consumer_key: ENV['YELP_CONSUMER_KEY'],
+                              consumer_secret: ENV['YELP_CONSUMER_SECRET'],
+                              token: ENV['YELP_TOKEN'],
+                              token_secret: ENV['YELP_TOKEN_SECRET']
   })
 
   CHAINS = ['Starbucks', 'Dunkin Donuts', 'Panera', 'McDonalds',
-    'Caribou Coffee', 'Peet\'s Coffee', 'Honey Dew Donuts', 'Tim Horton\'s']
+            'Caribou Coffee', 'Peet\'s Coffee', 'Honey Dew Donuts', 'Tim Horton\'s']
 
-    attr_accessor :location
+  attr_accessor :location
 
-  def initialize
+  def initialize(location)
     @location = location
   end
-# CoffeeShopSearch.new.search('boston')
-# CoffeeShopSearch.new('boston').search
+
+  # CoffeeShopSearch.new.search('boston')
+  # CoffeeShopSearch.new('boston').search
 
 
   def search
     #search_results is a hash
     search_results = CLIENT.search(@location, term: 'food',
-      category_filter: 'coffee').businesses
+                                   category_filter: 'coffee').businesses
+    @local_coffee_shops = search_results.reject do |key,value|
+      CHAINS.include?(key.name)
+    end
+  end
 
-    local_coffee_shops = search_results.reject do |key,value|
+  def search_individual
+    search_results = CLIENT.search(@location, term: 'food',
+                                   category_filter: 'coffee').businesses
+    @local_coffee_shops = search_results.reject do |key,value|
       CHAINS.include?(key.name)
     end
 
+    @coffee_shop = @local_coffee_shops.find(params[:id])
+
   end
-
-
 end

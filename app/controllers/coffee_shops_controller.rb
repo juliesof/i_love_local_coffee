@@ -1,16 +1,17 @@
-class CoffeeShopsController <ApplicationController
+class CoffeeShopsController < ApplicationController
 
   def index
-    @coffee_shops = CoffeeShop.all
+
+    if params[:location].present?
+      @local_coffee_shops = CoffeeShopSearch.new(params[:location]).search
+    end
   end
 
   def show
-    @coffee_shop = CoffeeShop.find(params[:id])
   end
 
-  def new (location)
-    # CoffeeShopSearch(@location).new
-  end
+  def create
 
+  end
 
 end
