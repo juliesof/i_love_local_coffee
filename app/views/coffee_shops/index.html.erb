@@ -1,8 +1,8 @@
 <% if params[:location].present? %>
   <% @local_coffee_shops.each do |cs| %>
-  <div><%= link_to cs.name, coffee_shop_path(cs.id) %></div><br>
+  <div><%= link_to cs.name, cs.url %></div><br>
+  <!-- coffee_shop_path(cs.id)  -->
   <div><%= cs.location.display_address %></div><br><br>
-  <div><%= cs.phone %></div><br>
   <% end %>
 
 <% else %>

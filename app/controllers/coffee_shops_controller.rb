@@ -6,12 +6,4 @@ class CoffeeShopsController < ApplicationController
       @local_coffee_shops = CoffeeShopSearch.new(params[:location]).search
     end
   end
-
-  def show
-  end
-
-  def create
-
-  end
-
 end

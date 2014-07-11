@@ -8,7 +8,8 @@ class CoffeeShopSearch
   })
 
   CHAINS = ['Starbucks', 'Dunkin Donuts', 'Panera', 'McDonalds',
-            'Caribou Coffee', 'Peet\'s Coffee', 'Honey Dew Donuts', 'Tim Horton\'s']
+            'Caribou Coffee', 'Peet\'s Coffee', 'Honey Dew Donuts',
+            'Tim Horton\'s', 'Starbucks Coffee', 'Dunkin\' Donuts']
 
   attr_accessor :location
 
@@ -27,16 +28,5 @@ class CoffeeShopSearch
     @local_coffee_shops = search_results.reject do |key,value|
       CHAINS.include?(key.name)
     end
-  end
-
-  def search_individual
-    search_results = CLIENT.search(@location, term: 'food',
-                                   category_filter: 'coffee').businesses
-    @local_coffee_shops = search_results.reject do |key,value|
-      CHAINS.include?(key.name)
-    end
-
-    @coffee_shop = @local_coffee_shops.find(params[:id])
-
   end
 end
