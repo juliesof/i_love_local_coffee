@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :coffee_shops
   # resources :coffee_shop_searches #, only: [:new, :create]
 
-  root 'coffee_shop_searches#new'
+  root 'coffee_shops#index'
 
   devise_for :users
 
