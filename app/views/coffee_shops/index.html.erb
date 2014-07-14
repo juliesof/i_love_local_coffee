@@ -1,7 +1,9 @@
 <% if params[:location].present? %>
+
+  <h1>Independently Owned Coffee Shops in Your Area</h1><br><br>
   <% @local_coffee_shops.each do |cs| %>
+
   <div><%= link_to cs.name, cs.url %></div><br>
-  <!-- coffee_shop_path(cs.id)  -->
   <div><%= cs.location.display_address %></div><br><br>
   <% end %>
 
