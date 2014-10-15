@@ -17,9 +17,6 @@ class CoffeeShopSearch
     @location = location
   end
 
-  # CoffeeShopSearch.new.search('boston')
-  # CoffeeShopSearch.new('boston').search
-
 
   def search
     #search_results is a hash
