@@ -1,3 +1,26 @@
+
+.content-box {
+  height: 768px;
+  padding: auto, 100px;
+}
+#search{
+  background: url(SAM_1650.JPG);
+  max-width: 100%;
+  min-width: 100%;
+}
+#why-indie {
+  background: url(SAM_0171.JPG) center;
+  max-width: 100%;
+  min-width: 100%;
+  opacity: 0.7;
+}
+#about-me {
+  background: url(SAM_0514.JPG) center;
+  max-width: 100%;
+  min-width: 100%;
+  opacity: 0.7;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

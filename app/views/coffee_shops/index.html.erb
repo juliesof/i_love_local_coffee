@@ -1,5 +1,5 @@
 <% if params[:location].present? %>
-
+  <!-- render minimalist nav bar -->
   <h1>Independently Owned Coffee Shops in Your Area</h1><br><br>
   <% @local_coffee_shops.each do |cs| %>
     <% unformated_address = cs.location.display_address %>
@@ -9,17 +9,32 @@
   <% end %>
 
 <% else %>
+  <!-- render smoothscroll nav bar-->
 
-  <%= form_tag coffee_shops_path, method: :get do %>
-  <!-- forms usually submit as post you have to specify get bc its diff (get) -->
-  <!-- form_tag doesnt provide a temp variable -->
-  <!-- non-model aware form bc css is only-->
-    <%= label_tag :location, 'Enter your zipcode' %>
-    <%= text_field_tag :location %>
+  <div id="search" class="content-box">
+    <a href="#" onclick="return false;" onmousedown="smoothScroll('why-indie');">
+    Why Indie Coffee</a><br />
+    <a href="#" onclick="return false;" onmousedown="smoothScroll('about-me');">
+    About Me</a><br />
 
-    <%= submit_tag(value="Search") %>
-  <% end %>
+    <%= form_tag coffee_shops_path, method: :get do %>
+      <%= label_tag :location, 'Enter your zipcode' %>
+      <%= text_field_tag :location %>
+      <%= submit_tag(value="Search") %>
+    <% end %>
+  </div>
 
+  <div id="why-indie" class="content-box">
+    <p>Why Indie Coffee Shops are Important</p>
+    <a href="#" onclick="return false;" onmousedown="returnScroller('search');">
+  go back to top</a>
+  </div>
+
+  <div id="about-me" class="content-box">
+    <p>Who am I?</p>
+    <a href="#" onclick="return false;" onmousedown="returnScroller('search');">
+  go back to top</a>
+  </div>
 <% end %>
 
 
