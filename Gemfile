@@ -32,9 +32,8 @@ gem 'pry-rails', :group => :development
 
 gem 'yelp'
 
-group :production do
-  gem 'rails_12factor'
-end
+gem 'rails_12factor', group: :production
+
 
 group :development, :test do
   gem 'dotenv-rails'
