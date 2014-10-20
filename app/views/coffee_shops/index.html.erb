@@ -1,30 +1,36 @@
 <% if params[:location].present? %>
   <!-- render minimalist nav bar -->
-  <h1>Independently Owned Coffee Shops in Your Area</h1><br><br>
-  <% @local_coffee_shops.each do |cs| %>
-    <% unformated_address = cs.location.display_address %>
-    <div><%= unformated_address.first %></div>
-    <div><%= unformated_address.last %></div><br>
-    <div><%= link_to cs.name, cs.url %></div><br><br>
-  <% end %>
+  <h1>Independently Owned Coffee Shops in Your Area</h1>
 
-<% else %>
-  <!-- render smoothscroll nav bar-->
-
-  <div id="search" class="content-box">
-    <a href="#" onclick="return false;" onmousedown="smoothScroll('why-indie');">
-    Why Indie Coffee</a><br />
-    <a href="#" onclick="return false;" onmousedown="smoothScroll('about-me');">
-    About Me</a><br />
-
-    <%= form_tag coffee_shops_path, method: :get do %>
-      <%= label_tag :location, 'Enter your zipcode' %>
-      <%= text_field_tag :location %>
-      <%= submit_tag(value="Search") %>
+    <% @local_coffee_shops.each do |cs| %>
+      <% unformated_address = cs.location.display_address %>
+      <div id="yelp-responses">
+        <div><a target="_blank"<%= link_to cs.name, cs.url %></div>
+        <div><%= unformated_address.first %></div>
+        <div><%= unformated_address.last %></div>
+      </div>
     <% end %>
   </div>
 
-  <div id="why-indie" class="content-box">
+<% else %>
+
+  <div id="search" class="content-box">
+    <h1 id="homepage-h1">I Love Local Coffee
+      <!-- <span>
+        <a href="#" onclick="return false;" onmousedown="smoothScroll('why-indie');">Why Indie Coffee</a>
+        <a href="#" onclick="return false;" onmousedown="smoothScroll('about-me');">About Me</a>
+      </span> -->
+    </h1>
+    <div id="form">
+      <%= form_tag coffee_shops_path, method: :get do %>
+        <%= label_tag :location, 'Enter your zipcode' %>
+        <%= text_field_tag :location %>
+        <a href="#" class="myButton"><%= submit_tag(value="Search") %></a>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- <div id="why-indie" class="content-box">
     <p>Why Indie Coffee Shops are Important</p>
     <a href="#" onclick="return false;" onmousedown="returnScroller('search');">
   go back to top</a>
@@ -34,7 +40,7 @@
     <p>Who am I?</p>
     <a href="#" onclick="return false;" onmousedown="returnScroller('search');">
   go back to top</a>
-  </div>
+  </div> -->
 <% end %>
 
 
